@@ -1,0 +1,16 @@
+.list {
+  align-items: center;
+  display: flex;
+  gap: 1.5rem;
+  &__item {
+    line-height: 19px;
+    color: var(--white);
+    &:hover {
+      color: var(--blue-main-light);
+    }
+
+    &-active {
+      color: var(--color-blue-active);
+    }
+  }
+}

@@ -1,0 +1,28 @@
+.textarea {
+  --gx-input-font-size-medium: 16px;
+  --gx-input-border-radius-medium: 0;
+  --gx-input-color: var(--color-default);
+  --gx-input-font-family: var(--font-family);
+  --gx-input-border-width: 2px;
+  --gx-input-border-color: var(--border-color-default);
+  --gx-input-border-color-hover: var(--border-color-hover);
+  --gx-input-border-color-focus: var(--border-color-hover);
+
+  --gx-focus-ring-box-shadow: var(--transparent);
+
+  // label
+  --gx-input-label-font-size-medium: 14px;
+  --gx-input-label-color: var(--color-default);
+  --gx-spacing-xxx-small: 7px;
+
+  &::part(base) {
+    padding: 0 10px;
+    margin: 0;
+    margin-top: -2px;
+    height: 132px;
+  }
+
+  &::part(label) {
+    font-weight: 500;
+  }
+}

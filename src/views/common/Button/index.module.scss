@@ -1,0 +1,66 @@
+.button {
+  --gx-input-height-medium: 40px;
+  --gx-input-border-radius-medium: 0;
+  --gx-input-border-width: 0;
+  --gx-button-font-size-medium: 16px;
+  --gx-input-line-height-medium: 19px;
+  --gx-font-weight-semibold: 500;
+  font-family: var(--font-family);
+  position: relative;
+
+  &::part(base) {
+    box-shadow: none;
+    padding: 15px 26px;
+    background-color: var(--blue-main);
+    border: 2px solid var(--blue-main);
+    width: 100%;
+  }
+
+  &::part(label) {
+    display: flex;
+    align-items: center;
+    color: var(--white);
+  }
+
+  &:hover {
+    &::part(base) {
+      background-color: var(--color-blue-hover);
+      border-color: var(--color-blue-hover);
+    }
+  }
+
+  &_uppercase {
+    &::part(label) {
+      text-transform: uppercase;
+    }
+  }
+
+  &_text {
+    &::part(base) {
+      background-color: transparent;
+      border: 2px solid var(--blue-main);
+    }
+
+    &::part(label) {
+      color: var(--blue-main);
+    }
+
+    &:hover {
+      &::part(base) {
+        background-color: transparent;
+      }
+      &::part(label) {
+        opacity: 0.8;
+      }
+    }
+
+    &[disabled]:not([disabled='false']) {
+      &::part(base) {
+        border-color: var(--blue-main);
+      }
+      &::part(label) {
+        color: var(--blue-main);
+      }
+    }
+  }
+}

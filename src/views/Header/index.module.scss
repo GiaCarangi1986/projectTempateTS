@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  background-color: var(--blue-main);
+  height: 90px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 30px 22px;
+}
+
+.icon {
+  width: 133px;
+  height: 40px;
+  color: var(--white);
+}

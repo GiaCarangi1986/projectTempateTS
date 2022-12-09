@@ -1,0 +1,54 @@
+.modal {
+  &::part(panel) {
+    box-shadow: 0 18px 40px -24px var(--color-blue-shadow);
+    border-radius: 10px;
+    height: auto;
+    max-height: 90vh;
+    width: auto;
+    max-width: 95vw;
+  }
+
+  &::part(body) {
+    padding: 20px 40px;
+  }
+
+  &__right {
+    &::part(panel) {
+      height: 100vh;
+      max-height: 100vh;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &::part(base) {
+      left: auto;
+    }
+  }
+
+  &__content {
+    margin: 15px 0 20px;
+  }
+
+  &__title {
+    margin: 10px 0;
+    font-size: 28px;
+  }
+
+  &__pretitle {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 10px 0;
+  }
+
+  &__description {
+    font-size: 14px;
+    margin: 5px 0;
+    color: var(--color-gray);
+    font-weight: 400;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+}

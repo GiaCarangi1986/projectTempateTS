@@ -1,0 +1,29 @@
+.select {
+  height: 45px;
+  font-size: 16px;
+  &:focus-within {
+    .dropdowm-indicator {
+      color: var(--color-icon-active);
+    }
+  }
+}
+
+.select-label {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-family);
+  font-size: 14px;
+  color: var(--color-default);
+  margin-bottom: 7px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.dropdowm-indicator {
+  margin-right: 10px;
+  color: var(--color-icon);
+  display: flex;
+  &:hover {
+    color: var(--color-icon-hover);
+  }
+}
