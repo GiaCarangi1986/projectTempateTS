@@ -1,0 +1,32 @@
+.header {
+  margin-bottom: 20px;
+  padding: 10px 0;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  column-gap: 50px;
+  &__search-group,
+  &__checkbox-group {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+  }
+  &__checkbox-group {
+    gap: 5px;
+  }
+}
+
+.search {
+  min-width: 275px;
+  max-width: 20%;
+}
+
+.btn {
+  &::part(base) {
+    height: 45px;
+  }
+}

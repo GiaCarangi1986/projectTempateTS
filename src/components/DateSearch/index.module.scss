@@ -1,0 +1,24 @@
+.datesearch {
+  &__form {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  &__btn-container {
+    display: flex;
+  }
+  &__btn {
+    width: 50px;
+    &::part(base) {
+      padding: 5px;
+      height: 45px;
+    }
+    &_cancel {
+      & gx-icon {
+        width: 24px;
+        height: 24px;
+        color: var(--blue-main);
+      }
+    }
+  }
+}

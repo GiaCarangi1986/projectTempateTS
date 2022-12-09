@@ -11,12 +11,24 @@ export const PATHS = {
 export const FORM_NAMES = {
   non_field_errors: 'non_field_errors',
   login: 'login',
-  password: 'password'
+  password: 'password',
+  search: 'search',
+  dateStart: 'dateStart',
+  dateEnd: 'dateEnd',
+  checkWithoutAgree: 'checkWithoutAgree',
+  checkAgree: 'checkAgree',
+  checkNotAgree: 'checkNotAgree'
 };
 
 export const FORM_LABELS = {
   login: 'Логин',
-  password: 'Пароль'
+  password: 'Пароль',
+  search: 'Поиск...',
+  dateStart: 'Дата начала',
+  dateEnd: 'Дата окончания',
+  checkWithoutAgree: 'Без подверждения',
+  checkAgree: 'Успешное подтверждение',
+  checkNotAgree: 'Неуспешное подтверждение'
 };
 
 export const COOKIES_DATA = {

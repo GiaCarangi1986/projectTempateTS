@@ -10,6 +10,7 @@ import Textarea from './TextArea';
 import BaseSelect from './Select';
 import Switch from './Switch';
 import InputPhone from './InputPhone';
+import Checkbox from './Checkbox';
 
 export {
   Button,
@@ -23,5 +24,6 @@ export {
   Textarea,
   BaseSelect,
   Switch,
-  InputPhone
+  InputPhone,
+  Checkbox
 };

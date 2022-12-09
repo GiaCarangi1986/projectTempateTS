@@ -1,0 +1,16 @@
+.checkbox {
+  &::part(control) {
+    background-color: var(--white);
+    border: 1px solid var(--color-default);
+  }
+  &::part(label) {
+    font-size: 14px;
+    color: var(--color-default);
+  }
+
+  &:hover {
+    &::part(label) {
+      color: var(--blue-main);
+    }
+  }
+}
