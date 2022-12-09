@@ -1,4 +1,3 @@
-import { fromPairs } from 'lodash';
 import {
   deleteSpaces,
   handingErrors,
@@ -6,7 +5,9 @@ import {
   andOrChangeObjValueInState
 } from './helpers';
 
-import { useGetResponse } from './hooks';
+import { StandartPageContext } from './contexts';
+
+import { useGetResponse, useFilters } from './hooks';
 
 import { dateYYYYMMDDdashHHmmcolon, dateDDMMYYYYPoint } from './date';
 
@@ -17,5 +18,7 @@ export {
   deleteObjKeyInState,
   andOrChangeObjValueInState,
   dateYYYYMMDDdashHHmmcolon,
-  dateDDMMYYYYPoint
+  dateDDMMYYYYPoint,
+  StandartPageContext,
+  useFilters
 };

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FilterType } from '../../components/TableSettings/types';
 
 import { INIT_DATA_RESPONSE, PARAM_NAME } from '../../const';
 
@@ -45,4 +46,27 @@ export const useGetResponse = (): ResponseType => {
     loading: data.loading,
     getResult
   };
+};
+
+export const INIT_FILTERS: FilterType = {
+  search: '',
+  dateStart: '',
+  dateEnd: '',
+  notChecked: {
+    checkAgree: false,
+    checkNotAgree: false,
+    checkWithoutAgree: false
+  },
+  offset: 0,
+  limit: 20
+};
+
+export const useFilters = () => {
+  const [filters, setFilters] = useState<FilterType>(INIT_FILTERS);
+
+  const changeFilter = (param: FilterType) => {
+    setFilters({ ...filters, ...param });
+  };
+
+  return { filters, changeFilter };
 };

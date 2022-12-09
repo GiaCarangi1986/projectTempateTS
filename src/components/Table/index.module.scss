@@ -1,0 +1,56 @@
+@mixin container {
+  padding: 10px;
+  display: grid;
+  column-gap: 15px;
+  grid-auto-flow: column;
+  height: 100%;
+  align-items: center;
+  grid-template-columns: var(--template-columns);
+}
+
+@mixin content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-default);
+  font-size: 14px;
+}
+
+.standart-page {
+  &__row {
+    @include container();
+  }
+  &__item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--color-default);
+    font-size: 14px;
+  }
+}
+
+.standart-header {
+  @include container();
+  padding-right: 19px;
+  &__item {
+    @include content();
+    font-weight: bold;
+  }
+}
+
+.table {
+  &__empty {
+    &-container {
+      position: relative;
+      height: 100%;
+    }
+    &-text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
+}
