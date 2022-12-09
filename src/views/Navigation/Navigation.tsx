@@ -27,6 +27,26 @@ const Navigation = () => {
         </li>
         <li>
           <NavLink
+            to={PATHS.history}
+            className={cn(style.list__item, {
+              [style['list__item-active']]: pathname === PATHS.history
+            })}
+          >
+            История тестов
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={PATHS.statistics}
+            className={cn(style.list__item, {
+              [style['list__item-active']]: pathname === PATHS.statistics
+            })}
+          >
+            Статистика
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             onClick={logout}
             to={PATHS.auth}
             className={style.list__item}

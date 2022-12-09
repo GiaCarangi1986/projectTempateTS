@@ -7,6 +7,7 @@ const shortString = 'Слишком мало символов';
 const longString = 'Слишком много символов';
 const notNegative = 'Число должно быть положительным';
 const longStringValue = `${longString}. Максимальная длина -`;
+const correctDates = 'Дата окончания должна быть больше даты начала';
 
 export {
   requiredField,
@@ -15,5 +16,6 @@ export {
   emailRegExp,
   digitalRegExp,
   notNegative,
-  longStringValue
+  longStringValue,
+  correctDates
 };

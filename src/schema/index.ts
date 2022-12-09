@@ -28,10 +28,31 @@ const authTemp = Yup.string()
   .min(4, errorsMessenge.shortString)
   .max(50, errorsMessenge.longString);
 
+const dateTemp = Yup.mixed().nullable().required(errorsMessenge.requiredField);
+
+const dateTempEnd = Yup.mixed().test(
+  'CorrectDates',
+  errorsMessenge.correctDates,
+  (value, context) => {
+    if (context.parent.dateStart && value) {
+      const dateStart = context.parent.dateStart;
+      const dateEnd = value;
+      return dateStart < dateEnd;
+    }
+    return true;
+  }
+);
+
 const signUpSchema = () =>
   Yup.object().shape({
     login: authTemp,
     password: authTemp
   });
 
-export { signUpSchema };
+const dateSearchSchema = () =>
+  Yup.object().shape({
+    dateStart: dateTemp,
+    dateEnd: dateTempEnd.nullable().required(errorsMessenge.requiredField)
+  });
+
+export { signUpSchema, dateSearchSchema };

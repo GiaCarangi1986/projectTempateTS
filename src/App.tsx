@@ -31,6 +31,14 @@ const AppWithRouter = () => {
           path={PATHS.auth}
           element={<GetStandartPage pageName={PAGE_NAME.auth} />}
         />
+        <Route
+          path={PATHS.history}
+          element={<GetStandartPage pageName={PAGE_NAME.history} />}
+        />
+        <Route
+          path={PATHS.statistics}
+          element={<GetStandartPage pageName={PAGE_NAME.statistics} />}
+        />
       </Routes>
     </Container>
   );

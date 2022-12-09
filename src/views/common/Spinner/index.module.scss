@@ -8,12 +8,23 @@
   justify-content: center;
   width: 100%;
   height: 100vh;
-  background-color: rgba(#fff, 0.5);
   --gx-color-primary-50: var(--blue-main);
+  background-color: rgba(white, 0.5);
+
   &::part(base) {
     border-width: 3px;
     width: 5em;
     height: 5em;
+  }
+}
+
+.loader {
+  &__centered {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__withoutBackground {
+    background-color: var(--transparet);
   }
 }
 
@@ -23,4 +34,10 @@
   width: auto;
   height: auto;
   left: 7px;
+  background-color: var(--transparet);
+
+  &::part(base) {
+    width: 1em;
+    height: 1em;
+  }
 }

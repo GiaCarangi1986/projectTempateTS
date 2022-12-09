@@ -1,11 +1,15 @@
 export const PAGE_NAME = {
   main: 'main',
-  auth: 'auth'
+  auth: 'auth',
+  history: 'history',
+  statistics: 'statistics'
 };
 
 export const PATHS = {
   [PAGE_NAME.main]: '/',
-  [PAGE_NAME.auth]: '/auth'
+  [PAGE_NAME.auth]: '/auth',
+  [PAGE_NAME.history]: '/history',
+  [PAGE_NAME.statistics]: '/statistics'
 };
 
 export const FORM_NAMES = {
@@ -19,6 +23,8 @@ export const FORM_NAMES = {
   checkAgree: 'checkAgree',
   checkNotAgree: 'checkNotAgree'
 };
+
+export const INPUT_LABEL = 'input-label';
 
 export const FORM_LABELS = {
   login: 'Логин',

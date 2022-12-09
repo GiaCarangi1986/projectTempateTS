@@ -26,7 +26,7 @@ const Statistics = () => {
 
   useEffect(() => {
     console.log('filters', filters);
-    getResult(api.testSending, filters);
+    getResult(api.getStatistic, filters);
   }, [filters]);
 
   return (

@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 
 import { StandartPageContext } from '../../utils';
+import RowInfo from '../History/RowInfo';
 import Row from '../Table/Row';
 
 import style from './index.module.scss';
 
 export const PAGE = {
-  example: 'example'
+  rowInfo: RowInfo
 };
 
 const StandartRow = ({ index, ...props }: any) => {
