@@ -17,6 +17,8 @@ const Button = forwardRef<HTMLGxButtonElement, ButtonProps>(
       pill = false,
       slot = '',
       uppercase = false,
+      iconView,
+      emptyView,
       ...otherProps
     },
     ref
@@ -29,7 +31,9 @@ const Button = forwardRef<HTMLGxButtonElement, ButtonProps>(
       {
         [styles.button_uppercase]: uppercase,
         [styles.button_pill]: pill,
-        [styles[`${otherClassName}`]]: otherClassName
+        [styles[`${otherClassName}`]]: otherClassName,
+        [styles['button_icon-view']]: iconView,
+        [styles['button_empy-view']]: emptyView
       }
     );
     return (

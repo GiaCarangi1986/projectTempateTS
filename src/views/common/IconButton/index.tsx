@@ -24,7 +24,7 @@ const IconButton = forwardRef<HTMLGxButtonElement, IconButtonProps>(
         slot={slot}
         src={icon}
       />
-      <span className={styles.label}>{label}</span>
+      {label && <span className={styles.label}>{label}</span>}
     </Button>
   )
 );

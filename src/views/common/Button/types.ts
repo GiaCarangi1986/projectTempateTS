@@ -8,6 +8,8 @@ interface ButtonProps extends JSX.GxButton {
   uppercase?: boolean;
   slot?: string;
   otherClassName?: string;
+  iconView?: boolean;
+  emptyView?: boolean;
 }
 
 export default ButtonProps;

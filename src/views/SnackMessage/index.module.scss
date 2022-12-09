@@ -1,0 +1,50 @@
+.snack {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  border-radius: 10px;
+  background-color: var(--blue-main);
+  padding: 16px 45px 16px 16px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-success);
+
+    &_error {
+      color: var(--color-red);
+    }
+  }
+
+  &__message {
+    font-weight: bold;
+    line-height: 24px;
+    font-size: 14px;
+  }
+
+  &__btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &::part(base) {
+      padding: 5px;
+    }
+
+    & gx-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--white);
+    }
+
+    &:hover {
+      & gx-icon {
+        color: var(--blue-main-light);
+      }
+    }
+  }
+}

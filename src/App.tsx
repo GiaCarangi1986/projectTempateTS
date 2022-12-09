@@ -9,6 +9,7 @@ import {
 
 import { COOKIES_DATA, PAGE_NAME, PATHS } from './const';
 import GetStandartPage from './pages';
+import Container from './components/Container';
 
 const AppWithRouter = () => {
   const currentUser = Cookies.get(COOKIES_DATA.currentUser);
@@ -20,16 +21,18 @@ const AppWithRouter = () => {
   }, []);
 
   return (
-    <Routes>
-      <Route
-        path={PATHS.main}
-        element={<GetStandartPage pageName={PAGE_NAME.main} />}
-      />
-      <Route
-        path={PATHS.auth}
-        element={<GetStandartPage pageName={PAGE_NAME.auth} />}
-      />
-    </Routes>
+    <Container>
+      <Routes>
+        <Route
+          path={PATHS.main}
+          element={<GetStandartPage pageName={PAGE_NAME.main} />}
+        />
+        <Route
+          path={PATHS.auth}
+          element={<GetStandartPage pageName={PAGE_NAME.auth} />}
+        />
+      </Routes>
+    </Container>
   );
 };
 

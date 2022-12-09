@@ -63,4 +63,51 @@
       }
     }
   }
+
+  &_icon-view {
+    height: 100%;
+    margin: 0;
+  }
+
+  &_icon-view::part(base) {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    color: var(--white);
+    background-color: var(--blue-main);
+    border: none;
+  }
+
+  &_icon-view::part(base):focus,
+  &_icon-view::part(base):active,
+  &_icon-view::part(base):focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &_icon-view:hover::part(base) {
+    background-color: var(--blue-main-light);
+    color: var(--color-default);
+  }
+
+  &_empy-view {
+    width: auto;
+    &::part(base) {
+      background-color: var(--transparet);
+      border: none;
+      padding: 5px 10px;
+    }
+    & gx-icon {
+      color: var(--color-blue-hover);
+    }
+    &:hover {
+      &::part(base) {
+        background-color: var(--transparet);
+        border: none;
+      }
+      & gx-icon {
+        color: var(--input-color);
+      }
+    }
+  }
 }
