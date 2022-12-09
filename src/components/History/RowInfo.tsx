@@ -1,14 +1,12 @@
-import React, { FC, useState, useEffect, useContext } from 'react';
+import React, { FC, useState } from 'react';
 import cn from 'classnames';
 
 import { IconButton } from '../../views/common';
 import { lookIcon } from '../../images';
 import ModalContainer from '../Modals';
-import { useGetResponse } from '../../utils';
+import { useErrorSnackMes, useGetResponse } from '../../utils';
 import * as api from '../../api';
 import Details from './Details';
-import { StateContext } from '../Container';
-import { ERRORS } from '../../const';
 
 import { RowInfoProps } from './types';
 import style from './index.module.scss';
@@ -33,7 +31,6 @@ const RowInfo: FC<RowInfoProps> = ({
   ...cols
 }) => {
   const { data, loading, error, getResult } = useGetResponse();
-  const { openSnackbar, setSnackMessage, setError } = useContext(StateContext);
 
   const [open, setOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -56,13 +53,7 @@ const RowInfo: FC<RowInfoProps> = ({
       ? style.rowinfo__agree
       : style.rowinfo__notagree;
 
-  useEffect(() => {
-    if (!loading && error) {
-      openSnackbar();
-      setError(true);
-      setSnackMessage(error ?? ERRORS.genaral);
-    }
-  }, [error, loading]);
+  useErrorSnackMes({ loading, error });
 
   return (
     <div className={cn(rowStyle, colorStyle)}>

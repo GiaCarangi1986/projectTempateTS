@@ -1,13 +1,16 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 
 import Table from '../Table';
-import { StandartPageContext, useFilters, useGetResponse } from '../../utils';
+import {
+  StandartPageContext,
+  useErrorSnackMes,
+  useFilters,
+  useGetResponse
+} from '../../utils';
 import StandartRow, { PAGE } from '../Table/StandartRow';
 import StandartHeader from '../Table/StandartHeader';
 import * as api from '../../api';
 import TableSettings from '../TableSettings';
-import { StateContext } from '../Container';
-import { ERRORS } from '../../const';
 
 import style from './index.module.scss';
 
@@ -36,16 +39,9 @@ const History = () => {
     }
   ];
   const { data, loading, error, getResult } = useGetResponse();
-  const { openSnackbar, setSnackMessage, setError } = useContext(StateContext);
   const { filters, changeFilter } = useFilters();
 
-  useEffect(() => {
-    if (!loading && error) {
-      openSnackbar();
-      setSnackMessage(error ?? ERRORS.genaral);
-      setError(true);
-    }
-  }, [loading, error]);
+  useErrorSnackMes({ loading, error });
 
   const handleFetchMore = (offset: number) => {
     changeFilter({ offset });

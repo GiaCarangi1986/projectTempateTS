@@ -7,7 +7,7 @@ import {
 
 import { StandartPageContext } from './contexts';
 
-import { useGetResponse, useFilters } from './hooks';
+import { useGetResponse, useFilters, useErrorSnackMes } from './hooks';
 
 import { dateYYYYMMDDdashHHmmcolon, dateDDMMYYYYPoint } from './date';
 
@@ -20,5 +20,6 @@ export {
   dateYYYYMMDDdashHHmmcolon,
   dateDDMMYYYYPoint,
   StandartPageContext,
-  useFilters
+  useFilters,
+  useErrorSnackMes
 };

@@ -1,14 +1,10 @@
-import { useState } from 'react';
+import { FC, useContext, useEffect, useState } from 'react';
+
+import { ERRORS, INIT_DATA_RESPONSE, PARAM_NAME } from '../../const';
+import { StateContext } from '../../components/Container';
+
 import { FilterType } from '../../components/TableSettings/types';
-
-import { INIT_DATA_RESPONSE, PARAM_NAME } from '../../const';
-
-type ResponseType = {
-  data: any;
-  loading: boolean | undefined;
-  error: any;
-  getResult: (func: (params: any) => Promise<any>, params?: any) => void;
-};
+import { ErrorSnackMesProps, ResponseType } from './types';
 
 export const useGetResponse = (): ResponseType => {
   const [data, setData] = useState(INIT_DATA_RESPONSE);
@@ -69,4 +65,19 @@ export const useFilters = () => {
   };
 
   return { filters, changeFilter };
+};
+
+export const useErrorSnackMes = ({
+  loading,
+  error
+}: ErrorSnackMesProps): void => {
+  const { openSnackbar, setSnackMessage, setError } = useContext(StateContext);
+
+  useEffect(() => {
+    if (!loading && error) {
+      openSnackbar();
+      setError(true);
+      setSnackMessage(error ?? ERRORS.genaral);
+    }
+  }, [error, loading]);
 };
