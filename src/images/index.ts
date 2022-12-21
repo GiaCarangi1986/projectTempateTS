@@ -6,6 +6,7 @@ import successIcon from './icons/success.svg';
 import cancelIcon from './icons/cancel.svg';
 import closeIcon from './icons/close.svg';
 import plusIcon from './icons/plus.svg';
+import sortIcon from './icons/sort.svg';
 
 export {
   logoIcon,
@@ -15,5 +16,6 @@ export {
   successIcon,
   cancelIcon,
   closeIcon,
-  plusIcon
+  plusIcon,
+  sortIcon
 };

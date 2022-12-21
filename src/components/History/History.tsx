@@ -5,7 +5,8 @@ import {
   StandartPageContext,
   useErrorSnackMes,
   useFilters,
-  useGetResponse
+  useGetResponse,
+  useSorting
 } from '../../utils';
 import StandartRow, { PAGE } from '../Table/StandartRow';
 import StandartHeader from '../Table/StandartHeader';
@@ -17,22 +18,27 @@ import style from './index.module.scss';
 const History = () => {
   const HEADER = [
     {
-      label: 'Автор'
+      label: 'Автор',
+      sortLabel: 'sortAuthor'
     },
     {
-      label: 'Дата и время'
+      label: 'Дата и время',
+      sortLabel: 'sortDateTime'
     },
     {
-      label: 'Тип продукции'
+      label: 'Тип продукции',
+      sortLabel: 'sortProductType'
     },
     {
       label: 'Номер плавки'
     },
     {
-      label: 'ОР'
+      label: 'ОР',
+      sortLabel: 'sortOR'
     },
     {
-      label: 'ОХН'
+      label: 'ОХН',
+      sortLabel: 'sortOHN'
     },
     {
       label: 'Сечение, мм'
@@ -40,7 +46,8 @@ const History = () => {
   ];
   const { data, loading, error, getResult } = useGetResponse();
   const { filters, changeFilter } = useFilters();
-
+  const { sortState, handleSort } = useSorting();
+  console.log('sortState', sortState);
   useErrorSnackMes({ loading, error });
 
   const handleFetchMore = (offset: number) => {
@@ -58,7 +65,12 @@ const History = () => {
         <TableSettings filters={filters} changeFilter={changeFilter} />
         <div className={style.history__content}>
           <div className={style.history__table}>
-            <StandartHeader headers={HEADER} leftOptions />
+            <StandartHeader
+              headers={HEADER}
+              leftOptions
+              onSort={handleSort}
+              sortData={sortState}
+            />
           </div>
           <div className={style.history__table}>
             <Table

@@ -1,5 +1,11 @@
 import { ComponentType, MouseEventHandler } from 'react';
-import { FixedSizeListProps, ListChildComponentProps } from 'react-window';
+import { ListChildComponentProps } from 'react-window';
+
+export enum SortDirection {
+  DESC = 'DESC',
+  ASC = 'ASC',
+  NONE = 'NONE'
+}
 
 type TableProps = {
   data?: any[] | null;
@@ -15,11 +21,29 @@ type CommonRowProps = ListChildComponentProps<any> & {
 
 type HeaderType = {
   label: string;
+  sortDirection?: SortDirection;
+  sortLabel?: string;
+  hidden?: boolean;
 };
 
 type StandartHeaderProps = {
   headers: HeaderType[];
   leftOptions?: boolean;
+  onSort?: (key: string) => void;
+  sortData?: any;
 };
 
-export type { TableProps, CommonRowProps, StandartHeaderProps, HeaderType };
+type HeadercConstructorProps = HeaderType & {
+  children: string;
+  onClick: () => void;
+  filter?: any;
+  isSortable: boolean;
+};
+
+export type {
+  TableProps,
+  CommonRowProps,
+  StandartHeaderProps,
+  HeaderType,
+  HeadercConstructorProps
+};

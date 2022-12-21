@@ -21,11 +21,7 @@
     @include container();
   }
   &__item {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: var(--color-default);
-    font-size: 14px;
+    @include content();
   }
 }
 
@@ -51,6 +47,82 @@
       transform: translate(-50%, -50%);
       font-size: 22px;
       font-weight: bold;
+    }
+  }
+}
+
+.headConstructor {
+  display: flex;
+  align-items: center;
+  text-align: start;
+  outline: none;
+  &_sortable {
+    cursor: pointer;
+  }
+  &__label {
+    background-color: var(--transparent);
+    border: none;
+    padding: 0;
+    &_clickable {
+      cursor: pointer;
+    }
+  }
+  &__text {
+    @include content();
+    font-weight: bold;
+    &_DESC {
+      color: var(--color-blue-hover);
+    }
+    &_ASC {
+      color: var(--color-blue-hover);
+    }
+    &_NONE {
+      color: var(--color-default);
+    }
+  }
+  &__filter-btn {
+    position: relative;
+    height: 18px;
+    align-self: flex-start;
+    &::part(base) {
+      padding: 0;
+      width: 20px;
+      height: 13px;
+      margin-top: -9px;
+    }
+  }
+  &__filter-icon {
+    position: absolute;
+    left: 0;
+
+    --icon-width: 22px;
+    --icon-height: 22px;
+    &_apply {
+      color: var(--color-orange);
+    }
+    &_open {
+      color: var(--color-black);
+    }
+  }
+  &__icon {
+    --icon-width: 11px;
+    --icon-height: 10px;
+    color: var(--color-blue-hover) !important;
+
+    &_DESC {
+      visibility: visible;
+      transform: rotate(0deg);
+    }
+
+    &_ASC {
+      visibility: visible;
+      transform: rotate(180deg);
+    }
+
+    &_NONE {
+      visibility: visible;
+      transform: rotate(0deg);
+      color: var(--color-gray) !important;
     }
   }
 }

@@ -5,6 +5,7 @@ import { StateContext } from '../../components/Container';
 
 import { FilterType } from '../../components/TableSettings/types';
 import { ErrorSnackMesProps, ResponseType } from './types';
+import { SortDirection } from '../../components/Table/types';
 
 export const useGetResponse = (): ResponseType => {
   const [data, setData] = useState(INIT_DATA_RESPONSE);
@@ -80,4 +81,34 @@ export const useErrorSnackMes = ({
       setSnackMessage(error ?? ERRORS.genaral);
     }
   }, [error, loading]);
+};
+
+export type SortingState = { [key: string]: SortDirection | undefined };
+
+export const useSorting = (initialSortState: SortingState = {}) => {
+  const [sortState, setSortState] = useState<SortingState>(initialSortState);
+
+  const getNextSortDirection = (field: SortDirection | undefined) => {
+    switch (field) {
+      case SortDirection.DESC:
+        return SortDirection.ASC;
+      case SortDirection.ASC:
+        return undefined;
+      case SortDirection.NONE:
+      default:
+        return SortDirection.DESC;
+    }
+  };
+
+  const handleSort = (key: string) => {
+    const currentSortState = sortState[key];
+    const nextSortState = getNextSortDirection(currentSortState);
+
+    setSortState({ [key]: nextSortState });
+  };
+
+  return {
+    sortState,
+    handleSort
+  };
 };

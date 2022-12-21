@@ -19,9 +19,9 @@
   }
   &__table {
     background-color: var(--white);
-    --template-columns: 40px minmax(150px, 1fr) minmax(80px, 0.5fr)
-      minmax(100px, 0.5fr) minmax(80px, 0.5fr) minmax(50px, 0.5fr)
-      minmax(50px, 0.5fr) minmax(50px, 0.5fr);
+    --template-columns: 40px minmax(160px, 1fr) minmax(100px, 0.5fr)
+      minmax(115px, 0.5fr) minmax(90px, 0.5fr) minmax(60px, 0.5fr)
+      minmax(60px, 0.5fr) minmax(60px, 0.5fr);
   }
 }
 
