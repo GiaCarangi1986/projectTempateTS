@@ -1,8 +1,9 @@
+import { dateDDMMYYYYPoint } from '../utils';
+
 import { AuthProps } from '../components/Auth/types';
-import { HistoryType } from '../components/History/types';
+import { HistoryDataType } from '../components/History/types';
 import { ChartType } from '../components/Statistics/types';
 import { FilterType } from '../components/TableSettings/types';
-import { dateDDMMYYYYPoint } from '../utils';
 
 export const sendLoginData = async (data: AuthProps) => {
   // const serData = outgoingLoginData(data);
@@ -48,7 +49,7 @@ export const testHistory = async (data: any) => {
   // const resData = await res.json();
   // return incomingLoginData(resData);
 
-  const arr: HistoryType[] = [];
+  const arr: HistoryDataType[] = [];
   for (let index = 0; index < 1000; index++) {
     arr.push({
       id: index,

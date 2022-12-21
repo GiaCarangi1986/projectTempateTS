@@ -11,7 +11,8 @@ type TableProps = {
   data?: any[] | null;
   rowElement: ComponentType<ListChildComponentProps>;
   loading: boolean;
-  onFetchMore?: (offset: number) => void;
+  onFetchMore?: () => void;
+  hasNextPage: boolean;
 };
 
 type CommonRowProps = ListChildComponentProps<any> & {

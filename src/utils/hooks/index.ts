@@ -58,14 +58,24 @@ export const INIT_FILTERS: FilterType = {
   limit: 20
 };
 
-export const useFilters = () => {
-  const [filters, setFilters] = useState<FilterType>(INIT_FILTERS);
+export const useFilters = (initfilters: FilterType = INIT_FILTERS) => {
+  const [filters, setFilters] = useState<FilterType>({
+    ...INIT_FILTERS,
+    ...initfilters
+  });
+  const [needConcat, setNeedConcat] = useState(false);
 
   const changeFilter = (param: FilterType) => {
-    setFilters({ ...filters, ...param });
+    const paramIsOffset = Object.keys(param)[0] === 'offset';
+    setNeedConcat(paramIsOffset);
+    setFilters({
+      ...filters,
+      offset: paramIsOffset ? filters.offset : INIT_FILTERS.offset,
+      ...param
+    });
   };
 
-  return { filters, changeFilter };
+  return { filters, changeFilter, needConcat };
 };
 
 export const useErrorSnackMes = ({

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { ListChildComponentProps } from 'react-window';
 
-type HistoryType = {
+type HistoryDataType = {
   id: number;
   author: string;
   dateTime: string;
@@ -13,9 +13,15 @@ type HistoryType = {
   isAgree: boolean | undefined;
 };
 
-type HistoryRowProps = ListChildComponentProps<HistoryType>;
+type HistoryType = {
+  data: HistoryDataType[];
+  isNext: boolean;
+  count: number;
+};
 
-type RowInfoProps = HistoryType & {
+type HistoryRowProps = ListChildComponentProps<HistoryDataType>;
+
+type RowInfoProps = HistoryDataType & {
   className?: string;
   children?: ReactNode;
   elemStyle?: string;
@@ -56,7 +62,8 @@ export type {
   TableRowProps,
   HistoryRowProps,
   RowInfoProps,
-  HistoryType,
+  HistoryDataType,
   DetailsProps,
-  TextRowProps
+  TextRowProps,
+  HistoryType
 };

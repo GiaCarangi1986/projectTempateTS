@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Table from '../Table';
 import {
@@ -12,6 +12,7 @@ import StandartRow, { PAGE } from '../Table/StandartRow';
 import StandartHeader from '../Table/StandartHeader';
 import * as api from '../../api';
 import TableSettings from '../TableSettings';
+import { HistoryType } from './types';
 
 import style from './index.module.scss';
 
@@ -45,14 +46,29 @@ const History = () => {
     }
   ];
   const { data, loading, error, getResult } = useGetResponse();
-  const { filters, changeFilter } = useFilters();
+  const { filters, changeFilter, needConcat } = useFilters();
   const { sortState, handleSort } = useSorting();
+  const [loadedData, setLoadeData] = useState<HistoryType[] | undefined>();
+
   console.log('sortState', sortState);
   useErrorSnackMes({ loading, error });
 
-  const handleFetchMore = (offset: number) => {
-    changeFilter({ offset });
+  const handleFetchMore = () => {
+    if (loadedData) {
+      changeFilter({ offset: loadedData.length });
+    }
   };
+
+  useEffect(() => {
+    if (data && !loading) {
+      if (needConcat) {
+        const arrTemp = loadedData ?? [];
+        setLoadeData([...arrTemp, ...data.data]);
+      } else {
+        setLoadeData(data.data);
+      }
+    }
+  }, [data, loading]);
 
   useEffect(() => {
     console.log('filters', filters);
@@ -78,6 +94,7 @@ const History = () => {
               rowElement={StandartRow}
               loading={!!loading}
               onFetchMore={handleFetchMore}
+              hasNextPage={false}
             />
           </div>
         </div>
