@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Table from '../Table';
 import {
   StandartPageContext,
-  useErrorSnackMes,
+  useSnackMes,
   useFilters,
   useGetResponse,
   useSorting
@@ -51,7 +51,7 @@ const History = () => {
   const [loadedData, setLoadeData] = useState<HistoryType[] | undefined>();
 
   console.log('sortState', sortState);
-  useErrorSnackMes({ loading, error });
+  useSnackMes({ loading, error });
 
   const handleFetchMore = () => {
     if (loadedData) {

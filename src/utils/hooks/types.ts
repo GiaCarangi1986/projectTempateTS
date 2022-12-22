@@ -7,7 +7,9 @@ type ResponseType = {
 
 type ErrorSnackMesProps = {
   loading: boolean | undefined;
-  error: string | undefined;
+  error?: any;
+  message?: string;
+  data?: any;
 };
 
 export type { ResponseType, ErrorSnackMesProps };

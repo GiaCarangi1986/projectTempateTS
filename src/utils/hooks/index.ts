@@ -78,19 +78,40 @@ export const useFilters = (initfilters: FilterType = INIT_FILTERS) => {
   return { filters, changeFilter, needConcat };
 };
 
-export const useErrorSnackMes = ({
+export const useSnackMes = ({
   loading,
-  error
+  error,
+  message = 'Запрос успешно выполнился!',
+  data
 }: ErrorSnackMesProps): void => {
   const { openSnackbar, setSnackMessage, setError } = useContext(StateContext);
 
-  useEffect(() => {
-    if (!loading && error) {
-      openSnackbar();
+  const openSnackBar = (mes: string, err?: boolean) => {
+    if (err) {
       setError(true);
-      setSnackMessage(error ?? ERRORS.genaral);
+    } else {
+      setError(false);
     }
-  }, [error, loading]);
+    setSnackMessage(mes);
+    openSnackbar();
+  };
+
+  useEffect(() => {
+    if (!loading) {
+      if (error) {
+        let errorText = ERRORS.genaral;
+        if (typeof error === 'string') {
+          errorText = error;
+        } else if (error instanceof Error) {
+          errorText = error.message;
+        }
+        openSnackBar(errorText, true);
+      } else if (data !== undefined) {
+        console.log('data', data);
+        openSnackBar(message);
+      }
+    }
+  }, [error, loading, data]);
 };
 
 export type SortingState = { [key: string]: SortDirection | undefined };

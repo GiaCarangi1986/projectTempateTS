@@ -7,12 +7,7 @@ import {
 
 import { StandartPageContext } from './contexts';
 
-import {
-  useGetResponse,
-  useFilters,
-  useErrorSnackMes,
-  useSorting
-} from './hooks';
+import { useGetResponse, useFilters, useSnackMes, useSorting } from './hooks';
 
 import { dateYYYYMMDDdashHHmmcolon, dateDDMMYYYYPoint } from './date';
 
@@ -24,7 +19,7 @@ export {
   andOrChangeObjValueInState,
   dateYYYYMMDDdashHHmmcolon,
   dateDDMMYYYYPoint,
-  useErrorSnackMes,
+  useSnackMes,
   StandartPageContext,
   useFilters,
   useSorting

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { useErrorSnackMes, useFilters, useGetResponse } from '../../utils';
+import { useSnackMes, useFilters, useGetResponse } from '../../utils';
 import DateSearch from '../DateSearch';
 import Chart from './Chart';
 import * as api from '../../api';
@@ -13,7 +13,7 @@ const Statistics = () => {
   const { filters, changeFilter } = useFilters();
   const { data, loading, error, getResult } = useGetResponse();
 
-  useErrorSnackMes({ loading, error });
+  useSnackMes({ loading, error });
 
   useEffect(() => {
     console.log('filters', filters);

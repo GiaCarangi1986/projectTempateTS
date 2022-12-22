@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { IconButton } from '../../views/common';
 import { lookIcon } from '../../images';
 import ModalContainer from '../Modals';
-import { useErrorSnackMes, useGetResponse } from '../../utils';
+import { useSnackMes, useGetResponse } from '../../utils';
 import * as api from '../../api';
 import Details from './Details';
 
@@ -53,7 +53,7 @@ const RowInfo: FC<RowInfoProps> = ({
       ? style.rowinfo__agree
       : style.rowinfo__notagree;
 
-  useErrorSnackMes({ loading, error });
+  useSnackMes({ loading, error });
 
   return (
     <div className={cn(rowStyle, colorStyle)}>
