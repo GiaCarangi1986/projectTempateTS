@@ -145,7 +145,7 @@ const Table: FC<TableProps> = ({
       if (hasNextPage && loadProps && loadState) {
         const scrollPercent = Math.floor(
           (loadState.scrollOffset /
-            (loadProps.itemCount * loadProps.itemSize - loadProps.height)) *
+            (loadProps.itemCount * loadProps.itemSize() - loadProps.height)) *
             100
         );
         if (scrollPercent > 50) {
