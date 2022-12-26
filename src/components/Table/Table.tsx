@@ -1,21 +1,139 @@
-import React, { FC, useRef } from 'react';
-import { FixedSizeList as List } from 'react-window';
+import React, {
+  createContext,
+  ElementType,
+  FC,
+  forwardRef,
+  useContext,
+  useRef
+} from 'react';
+import {
+  VariableSizeList as List,
+  ListChildComponentProps
+} from 'react-window';
 import AutoSizer, { Size } from 'react-virtualized-auto-sizer';
 import _ from 'lodash';
+import cn from 'classnames';
 
 import { Spinner } from '../../views/common';
+import StandartHeader from './StandartHeader';
 
-import { TableProps } from './types';
+import {
+  HeaderContextType,
+  HeaderListProps,
+  InnerListContainerProps,
+  TableProps
+} from './types';
 import style from './index.module.scss';
+
+const HEADER_HEIGHT = 40;
+const ROW_HEIGHT = 55;
+
+const initialContextValue = {
+  headers: [],
+  onSort: () => null,
+  onExpand: () => null,
+  ItemRenderer: 'div' as ElementType,
+  leftOptionsHeader: false,
+  scrollAction: () => null
+};
+
+// context used to pass props to header through inner list and item wrapper through
+export const HeaderContext =
+  createContext<HeaderContextType>(initialContextValue);
+
+// row wrapper used to override position for first element (due to header)
+const ItemWrapper = ({
+  index,
+  style: styles,
+  ...rest
+}: ListChildComponentProps) => {
+  const { ItemRenderer, width } = useContext(HeaderContext);
+  const wrapperStyle =
+    index === 0 ? { ...styles, top: `${HEADER_HEIGHT}px` } : styles;
+
+  return (
+    <ItemRenderer index={index} style={wrapperStyle} width={width} {...rest} />
+  );
+};
+
+// inner container for list with sticky header on top
+const InnerListContainer = forwardRef<HTMLDivElement, InnerListContainerProps>(
+  ({ children, ...rest }, ref) => {
+    const { headers, onSort, sortData, styleHeader, leftOptionsHeader } =
+      useContext(HeaderContext);
+    return (
+      <div ref={ref} className={style.innerContainer} {...rest}>
+        <div className={cn(style.header_sticky, styleHeader)}>
+          <StandartHeader
+            headers={headers}
+            onSort={onSort}
+            sortData={sortData}
+            leftOptions={leftOptionsHeader}
+          />
+        </div>
+
+        {children}
+      </div>
+    );
+  }
+);
+
+const HeaderList = forwardRef<List, HeaderListProps>(
+  (
+    {
+      children,
+      headers,
+      onSort,
+      sortData,
+      styleHeader,
+      leftOptionsHeader,
+      ...rest
+    },
+    ref
+  ) => (
+    <HeaderContext.Provider
+      value={{
+        ItemRenderer: children,
+        onSort,
+        headers,
+        sortData,
+        width: rest.width,
+        height: rest.height,
+        styleHeader,
+        leftOptionsHeader
+      }}
+    >
+      <List {...rest} ref={ref}>
+        {ItemWrapper}
+      </List>
+    </HeaderContext.Provider>
+  )
+);
 
 const Table: FC<TableProps> = ({
   data,
   rowElement,
   loading,
   hasNextPage,
-  onFetchMore = () => null
+  onFetchMore = () => null,
+  onSort,
+  sortData,
+  headers,
+  styleHeader,
+  leftOptionsHeader,
+  heightRow
 }) => {
   const itemCount = data?.length ?? 0;
+
+  const getItemSize = (index: number) => {
+    let rowHeight;
+    if (heightRow) {
+      rowHeight = heightRow;
+    } else {
+      rowHeight = ROW_HEIGHT;
+    }
+    return index === 0 ? rowHeight + HEADER_HEIGHT : rowHeight;
+  };
 
   const loaderRef = useRef<any>();
 
@@ -43,17 +161,25 @@ const Table: FC<TableProps> = ({
     <>
       <AutoSizer>
         {({ height, width }: Size) => (
-          <List
+          <HeaderList
+            itemSize={getItemSize}
+            className={style.table__list}
             height={height}
             width={width}
             itemCount={itemCount}
-            itemSize={55}
             itemData={data}
             ref={loaderRef}
             onScroll={throttledScroll}
+            innerElementType={InnerListContainer}
+            headers={headers}
+            onSort={onSort}
+            sortData={sortData}
+            styleHeader={styleHeader}
+            leftOptionsHeader={leftOptionsHeader}
+            useIsScrolling
           >
             {rowElement}
-          </List>
+          </HeaderList>
         )}
       </AutoSizer>
 

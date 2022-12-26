@@ -9,7 +9,6 @@ import {
   useSorting
 } from '../../utils';
 import StandartRow, { PAGE } from '../Table/StandartRow';
-import StandartHeader from '../Table/StandartHeader';
 import * as api from '../../api';
 import TableSettings from '../TableSettings';
 import { HistoryType } from './types';
@@ -81,20 +80,16 @@ const History = () => {
         <TableSettings filters={filters} changeFilter={changeFilter} />
         <div className={style.history__content}>
           <div className={style.history__table}>
-            <StandartHeader
-              headers={HEADER}
-              leftOptions
-              onSort={handleSort}
-              sortData={sortState}
-            />
-          </div>
-          <div className={style.history__table}>
             <Table
+              headers={HEADER}
               data={data}
               rowElement={StandartRow}
               loading={!!loading}
               onFetchMore={handleFetchMore}
               hasNextPage={false}
+              leftOptionsHeader
+              onSort={handleSort}
+              sortData={sortState}
             />
           </div>
         </div>

@@ -9,19 +9,14 @@
   }
   &__content {
     display: grid;
-    grid-template-rows: auto 1fr;
-    overflow-x: auto;
-    overflow-y: hidden;
-    &::-webkit-scrollbar-track {
-      margin-right: 0;
-      padding-right: 0;
-    }
+    grid-template-rows: 1fr;
   }
   &__table {
+    width: calc(100vw - 40px);
     background-color: var(--white);
     --template-columns: 40px minmax(160px, 1fr) minmax(100px, 0.5fr)
       minmax(115px, 0.5fr) minmax(90px, 0.5fr) minmax(60px, 0.5fr)
-      minmax(60px, 0.5fr) minmax(60px, 0.5fr);
+      minmax(60px, 0.5fr) minmax(80px, 0.5fr);
   }
 }
 

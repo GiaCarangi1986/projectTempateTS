@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { ERRORS, INIT_DATA_RESPONSE, PARAM_NAME } from '../../const';
 import { StateContext } from '../../components/Container';

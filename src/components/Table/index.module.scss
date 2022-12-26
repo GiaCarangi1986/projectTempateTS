@@ -28,10 +28,20 @@
 .standart-header {
   @include container();
   padding-right: 19px;
+  background-color: var(--white);
   &__item {
     @include content();
     font-weight: bold;
   }
+}
+
+.header_sticky {
+  position: sticky !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  z-index: 1;
 }
 
 .table {
@@ -49,6 +59,10 @@
       font-weight: bold;
     }
   }
+}
+
+.standart_row {
+  height: 55px;
 }
 
 .headConstructor {
@@ -125,4 +139,18 @@
       color: var(--color-gray) !important;
     }
   }
+}
+
+.table {
+  &__list {
+    will-change: auto !important;
+    &::-webkit-scrollbar-track {
+      margin-top: 40px; // header height
+    }
+  }
+}
+
+.innerContainer {
+  position: absolute;
+  width: initial !important;
 }

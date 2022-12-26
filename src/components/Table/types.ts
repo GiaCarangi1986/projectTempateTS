@@ -1,19 +1,21 @@
-import { ComponentType, MouseEventHandler } from 'react';
-import { ListChildComponentProps } from 'react-window';
+import {
+  ComponentType,
+  ElementType,
+  MouseEventHandler,
+  ReactNode,
+  Ref
+} from 'react';
+import {
+  CommonProps,
+  VariableSizeListProps,
+  ListChildComponentProps
+} from 'react-window';
 
 export enum SortDirection {
   DESC = 'DESC',
   ASC = 'ASC',
   NONE = 'NONE'
 }
-
-type TableProps = {
-  data?: any[] | null;
-  rowElement: ComponentType<ListChildComponentProps>;
-  loading: boolean;
-  onFetchMore?: () => void;
-  hasNextPage: boolean;
-};
 
 type CommonRowProps = ListChildComponentProps<any> & {
   children: (rowData: any) => JSX.Element;
@@ -25,6 +27,20 @@ type HeaderType = {
   sortDirection?: SortDirection;
   sortLabel?: string;
   hidden?: boolean;
+};
+
+type TableProps = {
+  data?: any[] | null;
+  rowElement: ComponentType<ListChildComponentProps>;
+  loading: boolean;
+  onFetchMore?: () => void;
+  hasNextPage: boolean;
+  headers: Array<HeaderType>;
+  onSort?: (key: string) => void;
+  sortData?: any;
+  styleHeader?: string;
+  leftOptionsHeader?: boolean;
+  heightRow?: number;
 };
 
 type StandartHeaderProps = {
@@ -41,10 +57,33 @@ type HeadercConstructorProps = HeaderType & {
   isSortable: boolean;
 };
 
+type HeaderContextType = Pick<TableProps, 'headers' | 'onSort' | 'sortData'> & {
+  ItemRenderer: ElementType;
+  width?: number | string;
+  height?: number | string;
+  styleHeader?: string;
+  leftOptionsHeader?: boolean;
+};
+
+type InnerListContainerProps = CommonProps & {
+  children: ReactNode;
+};
+
+interface HeaderListProps
+  extends VariableSizeListProps,
+    Pick<TableProps, 'headers' | 'onSort' | 'sortData'> {
+  ref: Ref<any>;
+  styleHeader?: string;
+  leftOptionsHeader?: boolean;
+}
+
 export type {
   TableProps,
   CommonRowProps,
   StandartHeaderProps,
   HeaderType,
-  HeadercConstructorProps
+  HeadercConstructorProps,
+  HeaderContextType,
+  InnerListContainerProps,
+  HeaderListProps
 };

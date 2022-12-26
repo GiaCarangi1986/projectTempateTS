@@ -20,11 +20,13 @@ const StandartRow = ({ index, ...props }: any) => {
   return (
     <Row index={index} {...props}>
       {(rowData: any) => (
-        <Page
-          rowStyle={style['standart-page__row']}
-          elemStyle={style['standart-page__item']}
-          {...rowData}
-        />
+        <div className={style.standart_row}>
+          <Page
+            rowStyle={style['standart-page__row']}
+            elemStyle={style['standart-page__item']}
+            {...rowData}
+          />
+        </div>
       )}
     </Row>
   );
