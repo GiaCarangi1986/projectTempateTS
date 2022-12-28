@@ -16,7 +16,19 @@ const HeaderConstructor: FC<HeadercConstructorProps> = ({
 }) => {
   const [activeFilter, setActiveFilter] = useState<boolean>(false);
 
-  const getComponent = () => <></>;
+  const getComponent = () => {
+    // if (activeFilter) {
+    //   if (filter && filter?.isDate) {
+    //     return (
+    //       <CalendarComponent
+    //         onClose={() => setActiveFilter(false)}
+    //         filter={filter}
+    //       />
+    //     );
+    //   }
+    // }
+    return <></>;
+  };
 
   const getStyle = () => {
     if (filter?.isDate && filter.applyFilter) {
@@ -65,7 +77,7 @@ const HeaderConstructor: FC<HeadercConstructorProps> = ({
           emptyView
         />
       )}
-      {(filter?.isSort || isSortable) && (
+      {isSortable && (
         <IconButton
           className={styles['headConstructor__filter-btn']}
           iconClassName={cn(
