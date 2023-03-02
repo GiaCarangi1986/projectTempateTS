@@ -1,0 +1,37 @@
+.auth {
+  margin: auto;
+  padding: 50px 60px;
+  min-width: 440px;
+  height: calc(100vh - var(--header-height));
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.auth gx-input::part(form-control) {
+  width: 320px;
+}
+
+.btn_wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: var(--color-default);
+  margin-top: 0;
+}

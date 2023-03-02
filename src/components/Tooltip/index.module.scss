@@ -1,0 +1,45 @@
+.hide {
+  display: none;
+}
+
+.tooltip {
+  display: block;
+  position: fixed;
+  top: var(--top);
+  left: var(--left);
+  transform: translate(-50%, -150%);
+  max-width: 200px;
+  word-break: break-word;
+  background-color: var(--color-blue-active);
+  color: var(--color-blue-hover);
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  z-index: 30;
+  font-size: 14px;
+  font-family: var(--font-family);
+  font-weight: 500;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--color-blue-active) var(--transparent) var(--transparent)
+      var(--transparent);
+  }
+}
+
+.container {
+  position: relative;
+  width: min-content;
+  max-width: 100%;
+}
+
+.overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

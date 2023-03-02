@@ -1,0 +1,262 @@
+.hide {
+  display: none;
+}
+
+.container {
+  display: flex;
+  gap: 2%;
+  padding: 20px;
+  height: calc(100vh - var(--header-height));
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  background-color: var(--white);
+  padding: 10px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: calc(100% - 40% - 2%);
+  background-color: var(--white);
+  padding: 10px;
+}
+
+.title {
+  color: var(--color-default);
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-weight: 400;
+}
+
+.description {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-gray);
+}
+
+.button {
+  &-add_picture {
+    margin: 15px 0;
+    &__new {
+      margin-left: 10px;
+    }
+  }
+}
+
+.image-wrap,
+.specifications-wrap {
+  gap: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  padding-right: 10px;
+  margin-right: -10px;
+}
+
+.an-form {
+  max-height: 75vh;
+  overflow-y: auto;
+
+  margin-right: -10px;
+  padding: 0 10px 30px 0;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10%;
+  }
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  &__footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
+  &__error {
+    position: relative;
+    margin-top: 10px;
+  }
+}
+
+.specifications {
+  &__defbtn {
+    width: min-content;
+    &::part(base) {
+      width: min-content;
+      border: none;
+      padding: 0;
+    }
+  }
+  &__empty-defects {
+    margin: 0;
+  }
+  &__defect {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  &__element {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  &__header {
+    color: var(--color-default);
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  &__row {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 10px;
+    &_header {
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 10px;
+      &_notfirst {
+        padding-left: 10px;
+      }
+    }
+    &-comment {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 13px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__btn-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  &__export {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+  }
+  &__error {
+    position: relative;
+    margin-top: 0;
+    width: 100%;
+  }
+  &__test-btns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}
+
+.newtest {
+  &__btn-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  &__image-btn {
+    background-color: var(--transparet);
+    border: none;
+    padding: 0;
+    width: 100%;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  &__image-container {
+    position: relative;
+  }
+  &__image-iconbtn {
+    position: absolute;
+    z-index: 1;
+    &::part(base) {
+      border: 1px solid var(--color-gray);
+      padding: 10px;
+    }
+  }
+  &__image-index {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    background-color: var(--color-gray);
+    height: 40px;
+    font-weight: bold;
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.img-modal-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 5px;
+  }
+  &__name {
+    font-weight: bold;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.split {
+  position: relative;
+  max-height: 75vh;
+  min-height: 15vh;
+  width: 350px;
+  overflow-y: auto;
+  &__empty {
+    font-size: 14px;
+  }
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  &__defect {
+    color: var(--blue-main);
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  &__column {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    font-size: 14px;
+    column-gap: 10px;
+  }
+  &__name,
+  &__value {
+    word-break: break-word;
+    min-width: 80px;
+  }
+  &__name {
+    font-weight: 500;
+  }
+}

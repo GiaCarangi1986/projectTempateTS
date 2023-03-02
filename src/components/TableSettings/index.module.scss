@@ -1,0 +1,99 @@
+.header {
+  margin-bottom: 20px;
+  padding: 10px 0;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+}
+
+.filters {
+  display: flex;
+  column-gap: 50px;
+  margin-right: 15px;
+  &__search-group,
+  &__checkbox-group {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+  }
+  &__checkbox-group {
+    gap: 5px;
+  }
+}
+
+.search {
+  min-width: 275px;
+  max-width: 20%;
+}
+
+.btn {
+  &::part(base) {
+    height: 45px;
+  }
+}
+
+.group-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.table-settings {
+  &__icon-down {
+    transform: rotate(180deg);
+  }
+  &__title {
+    color: var(--color-default);
+    font-size: 22px;
+    margin: 0;
+    margin-top: -5px;
+    margin-bottom: 7px;
+  }
+  &__line {
+    display: block;
+    height: 1px;
+    background-color: var(--color-default);
+    margin: 7px 0;
+  }
+  &__list {
+    height: 68vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    z-index: 25;
+  }
+  &__btns {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    position: relative;
+  }
+  &__icons {
+    display: flex;
+    gap: 2.5px;
+  }
+  &__icon {
+    &btn {
+      &::part(base) {
+        background-color: var(--color-default);
+        height: 40px;
+        width: 40px;
+        padding: 5px;
+      }
+    }
+    &_drag {
+      &::part(base) {
+        background-color: var(--blue-main);
+      }
+    }
+  }
+}

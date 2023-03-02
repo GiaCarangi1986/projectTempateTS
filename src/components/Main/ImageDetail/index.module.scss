@@ -1,0 +1,117 @@
+.img-detail {
+  &__info {
+    display: flex;
+    gap: 20px;
+    height: 65vh;
+  }
+  &__container {
+    position: relative;
+  }
+}
+
+.canvasimg {
+  position: relative;
+
+  &__canvas {
+    width: auto;
+    max-width: 100%;
+    max-height: calc(65vh - 40px);
+    background-color: var(--color-blue-active);
+  }
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--blue-main);
+    background-color: var(--color-blue-active);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: var(--color-blue-shadow);
+    font-weight: bold;
+  }
+}
+
+.legend {
+  position: relative;
+  &__text {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  &__color {
+    position: relative;
+    padding-left: 15px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    &::after {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      content: '';
+      border-radius: 50%;
+      background-color: var(--color);
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+.canvas-constructor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &__btn {
+    height: auto;
+    &::part(base) {
+      height: 40px;
+    }
+    &:hover {
+      &::part(base) {
+        background-color: var(--blue-main);
+        color: var(--white);
+        opacity: 0.9;
+      }
+    }
+    &_dis {
+      opacity: 0.7;
+    }
+    &_empty {
+      &::part(base) {
+        background-color: var(--blue-main-light);
+      }
+      & gx-icon {
+        color: var(--color-default);
+      }
+      &:hover {
+        &::part(base) {
+          background-color: var(--blue-main-light);
+        }
+        & gx-icon {
+          color: var(--color-default);
+        }
+      }
+    }
+  }
+}
+
+.btn-group {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  &__section {
+    display: flex;
+  }
+}
+
+.icon-top {
+  transform: rotate(180deg);
+}
+
+.icon-left {
+  transform: rotate(90deg);
+}
+
+.icon-right {
+  transform: rotate(-90deg);
+}

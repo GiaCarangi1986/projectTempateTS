@@ -1,0 +1,46 @@
+.reference {
+  --margin: 15px;
+  height: calc(100vh - var(--header-height));
+  padding: 20px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  row-gap: 10px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--color-default);
+  }
+  &__btn {
+    width: auto;
+  }
+  &__data {
+    overflow: auto;
+    background-color: var(--white);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin);
+  }
+  &__img {
+    margin-top: var(--margin);
+    width: 60%;
+  }
+  &__paragraph {
+    &::first-letter {
+      margin-left: 8%;
+    }
+    &_margin_bottom {
+      margin-bottom: var(--margin);
+    }
+  }
+  &__picture {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

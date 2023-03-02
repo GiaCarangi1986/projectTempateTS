@@ -1,0 +1,31 @@
+.error-text {
+  color: var(--color-red);
+  font-size: 10px;
+  position: absolute;
+  word-break: break-word;
+
+  &-right {
+    left: 0;
+    width: 100%;
+    text-align: end;
+  }
+
+  &_margin {
+    &-left {
+      left: 3px;
+    }
+    &-top {
+      top: -15px;
+    }
+  }
+}
+
+.error {
+  &-date {
+    width: max-content;
+  }
+  &-bottom {
+    left: 0;
+    bottom: -15px;
+  }
+}

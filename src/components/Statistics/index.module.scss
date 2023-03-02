@@ -1,0 +1,24 @@
+.statistics {
+  height: calc(100vh - var(--header-height));
+  padding: 20px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  row-gap: 15px;
+
+  &_chart-container {
+    overflow: auto;
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+  }
+}
+
+.chart {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

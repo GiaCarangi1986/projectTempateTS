@@ -1,0 +1,80 @@
+.input {
+  --gx-input-height-medium: 45px;
+  --gx-input-font-size-medium: 16px;
+  --gx-input-border-radius-medium: 0;
+  --gx-input-color: var(--color-default);
+  --gx-input-font-family: var(--font-family);
+  --gx-input-border-width: 2px;
+  --gx-input-border-color: var(--border-color-default);
+  --gx-input-border-color-hover: var(--border-color-hover);
+  --gx-input-border-color-focus: var(--border-color-hover);
+  --gx-input-spacing-medium: 10px;
+  // label
+  --gx-input-label-font-size-medium: 14px;
+  --gx-input-label-color: var(--border-color-hover);
+  --gx-spacing-xxx-small: 7px;
+  font-weight: 500;
+}
+
+.input[readonly]:not([readonly='false']),
+.input[readonly]:not([readonly='false']):hover::part(base),
+.input[readonly]:not([readonly='false']):focus::part(base) {
+  --gx-input-border-color: var(--transparent);
+  border-color: var(--transparent);
+  cursor: default;
+}
+
+.input::part(dropdown) {
+  display: none;
+}
+
+.input::part(input) {
+  padding: 0 var(--gx-input-spacing-medium);
+  margin: 0;
+}
+
+.input::placeholder::part(input) {
+  color: var(--border-color-hover);
+}
+
+.input::part(label) {
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--color-default);
+}
+
+.input-label {
+  position: relative;
+  font-weight: 500;
+  line-height: 16px;
+  margin: 0;
+  &::part(label) {
+    position: absolute;
+    z-index: 1;
+    left: 15px;
+    padding: 0 5px;
+    background: var(--background-color);
+    transition: 0.3s all ease;
+    align-items: center;
+    height: min-content;
+    margin: 0;
+    font-size: 16px;
+    color: var(--border-color-hover);
+    max-width: 80%;
+    top: 50%;
+    transform: translate(0, -50%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+  &::part(input) {
+    color: var(--color-default);
+  }
+}
+
+.input-label:focus-within::part(label),
+.input-label.input-value::part(label) {
+  font-size: 12px;
+  top: 0;
+}

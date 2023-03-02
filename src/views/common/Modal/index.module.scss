@@ -1,0 +1,33 @@
+.modal {
+  &::part(close-button) {
+    display: none;
+  }
+  &__button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+
+    &::part(base) {
+      height: 100%;
+      padding: 0;
+      background-color: var(--transparet);
+      border: none;
+    }
+
+    &:hover {
+      &::part(base) {
+        background-color: var(--transparet);
+      }
+      & gx-icon {
+        color: var(--color-default);
+      }
+    }
+
+    & gx-icon {
+      height: 32px;
+      width: 32px;
+      color: var(--black);
+    }
+  }
+}

@@ -1,0 +1,115 @@
+.button {
+  --gx-input-height-medium: 40px;
+  --gx-input-border-radius-medium: 0;
+  --gx-input-border-width: 0;
+  --gx-button-font-size-medium: 16px;
+  --gx-input-line-height-medium: 19px;
+  --gx-font-weight-semibold: 500;
+  font-family: var(--font-family);
+  position: relative;
+  height: min-content;
+
+  &::part(base) {
+    box-shadow: none;
+    padding: 15px 26px;
+    background-color: var(--blue-main);
+    border: 2px solid var(--blue-main);
+    width: 100%;
+    white-space: break-spaces;
+  }
+
+  &::part(label) {
+    display: flex;
+    align-items: center;
+    color: var(--white);
+  }
+
+  &:hover {
+    &::part(base) {
+      background-color: var(--color-blue-hover);
+      border-color: var(--color-blue-hover);
+    }
+  }
+
+  &_uppercase {
+    &::part(label) {
+      text-transform: uppercase;
+    }
+  }
+
+  &_text {
+    &::part(base) {
+      background-color: transparent;
+      border: 2px solid var(--blue-main);
+    }
+
+    &::part(label) {
+      color: var(--blue-main);
+    }
+
+    &:hover {
+      &::part(base) {
+        background-color: transparent;
+      }
+      &::part(label) {
+        opacity: 0.8;
+      }
+    }
+
+    &[disabled]:not([disabled='false']) {
+      &::part(base) {
+        border-color: var(--blue-main);
+      }
+      &::part(label) {
+        color: var(--blue-main);
+      }
+    }
+  }
+
+  &_icon-view {
+    height: 100%;
+    margin: 0;
+  }
+
+  &_icon-view::part(base) {
+    padding: 0;
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    color: var(--white);
+    background-color: var(--blue-main);
+    border: none;
+  }
+
+  &_icon-view::part(base):focus,
+  &_icon-view::part(base):active,
+  &_icon-view::part(base):focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &_icon-view:hover::part(base) {
+    background-color: var(--blue-main-light);
+    color: var(--color-default);
+  }
+
+  &_empy-view {
+    width: auto;
+    &::part(base) {
+      background-color: var(--transparet);
+      border: none;
+      padding: 5px 10px;
+    }
+    & gx-icon {
+      color: var(--color-blue-hover);
+    }
+    &:hover {
+      &::part(base) {
+        background-color: var(--transparet);
+        border: none;
+      }
+      & gx-icon {
+        color: var(--input-color);
+      }
+    }
+  }
+}

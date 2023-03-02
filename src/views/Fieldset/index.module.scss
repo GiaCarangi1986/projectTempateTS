@@ -1,0 +1,13 @@
+.fieldset {
+  border: 0 none;
+  padding: 0;
+  position: relative;
+}
+
+.fieldset-error gx-input,
+.fieldset-error gx-textarea,
+.fieldset-error {
+  --gx-input-border-color: var(--color-red);
+  --gx-input-border-color-hover: var(--color-red-hover);
+  --gx-input-border-color-focus: var(--color-red-hover);
+}

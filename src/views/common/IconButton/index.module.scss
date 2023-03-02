@@ -1,0 +1,11 @@
+.label {
+  margin-left: 15px;
+  font-size: 14px;
+  letter-spacing: 0.06rem;
+}
+
+.button {
+  &__icon {
+    color: var(--white);
+  }
+}
